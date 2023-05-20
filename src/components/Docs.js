@@ -17,7 +17,8 @@ export const Docs = ({ database }) => {
     }
     const addData = () => {
         addDoc(collectionRef, {
-            title: title
+            title: title,
+            docsDesc:''
         })
             .then(() => {
                 alert('Data Added')
@@ -61,6 +62,7 @@ export const Docs = ({ database }) => {
                         <div className="grid-child"
                             onClick={() => getID(doc.id)}>
                             <p>{doc.title}</p>
+                            <div dangerouslySetInnerHTML={{ __html: doc.docsDesc }} style={{ fontWeight: 'Bold', fontStyle: 'Italic' }} />
                         </div>
                     )
                 })}
