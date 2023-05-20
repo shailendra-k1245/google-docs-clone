@@ -44,6 +44,8 @@ export const Docs = ({ database }) => {
         getData()
     })
     return (
+       <>
+       
         <div className="docs-main">
             <h1>Docs Clone</h1>
             <button className="add-docs"
@@ -68,5 +70,6 @@ export const Docs = ({ database }) => {
                 })}
             </div>
         </div >
+       </>
     )
 }

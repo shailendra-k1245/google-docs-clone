@@ -139,8 +139,28 @@
 
 .sidebar-div {
   display: flex;
-  /* padding: 2px; */
+  padding: 2px;
   gap: 10px;
   align-items: center;
   margin-left: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  padding: 15px;
+  gap: 10px;
+}
+
+.navbar-container>input {
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+  /* border-radius: 5px; */
+}
+
+.navbar-div {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  padding: 5px;
 }

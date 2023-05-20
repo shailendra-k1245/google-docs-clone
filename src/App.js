@@ -8,6 +8,7 @@ import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import { BiMenu } from 'react-icons/bi'
 import { useLocation } from 'react-router-dom';
+import { GrApps } from "react-icons/gr"
 
 
 function App() {
@@ -18,8 +19,8 @@ function App() {
   }
   return (
     <div >
-      {pathname === "/" ?
-        <>
+      {pathname === "/" && pathname !== "/editDocs/:id" ?
+        <div className='navbar-container'>
           <BiMenu onClick={toggleDrawer} style={{ fontSize: '40px' }} />
           <Drawer open={isOpen} onClose={toggleDrawer} direction='left' style={{ width: '250px' }}>
             <div className='Google-docs'>
@@ -55,7 +56,13 @@ function App() {
               <img src='https://cdn-icons-png.flaticon.com/512/733/733554.png' alt='drive' />
               <p>Drive</p></div>
           </Drawer>
-        </> : ""}
+          <img src='https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_256px.png' alt='docs-icon' style={{ width: '30px' }} />
+          <div className='navbar-div'>Docs</div>
+          <input type='text' placeholder='Search' />
+          <GrApps />
+          <div>f</div>
+        </div> : ""}
+
       <Routes>
         <Route path='/' element={<Docs database={database} />} />
         <Route path='/editDocs/:id' element={<EditDocs database={database} />} />
