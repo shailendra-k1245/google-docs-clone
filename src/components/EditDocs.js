@@ -5,6 +5,10 @@ import { useEffect, useRef, useState } from "react"
 import { updateDoc, collection, doc, onSnapshot } from "firebase/firestore"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
+import { CiTimer } from "react-icons/ci"
+import { BiCommentDetail } from "react-icons/bi"
+import { MdVideoCall } from "react-icons/md"
+import { CgProfile } from "react-icons/cg"
 
 
 export const EditDocs = ({ database }) => {
@@ -71,6 +75,13 @@ export const EditDocs = ({ database }) => {
                         <p>Extensions</p>
                         <p>Help</p>
                     </div>
+                </div>
+                <div className="share-bar">
+                    <CiTimer />
+                    <BiCommentDetail />
+                    <MdVideoCall />
+                    <img src="https://2.bp.blogspot.com/-wuhkBGAM8bQ/Vt-Kz80of4I/AAAAAAAAUJU/v99P5XMEnLA/s320/share-button.png" alt="share" />
+                    <CgProfile />
                 </div>
             </div>
             <div className="editDocs-main">

@@ -32,16 +32,17 @@
 .grid-main {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  color: whitesmoke;
+  color: black;
   gap: 20px;
   justify-content: center;
 }
 
 .grid-child {
   padding: 20px;
-  background-color: rgb(98, 98, 98);
+  background-color: rgb(235, 235, 235);
   width: 300px;
   cursor: pointer;
+  border: 1px solid black;
 }
 
 .editDocs-main {
@@ -91,4 +92,20 @@
 .document-title-inner {
   margin-top: -20px;
   margin-left: 5px;
+}
+
+.share-bar {
+  position: absolute;
+  padding: 5px;
+  right: 0px;
+}
+
+.share-bar>img {
+  width: 60px;
+}
+
+.share-bar>* {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
 }
