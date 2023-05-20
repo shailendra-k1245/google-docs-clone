@@ -3,6 +3,9 @@ import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
 import { useEffect, useRef, useState } from "react"
 import { updateDoc, collection, doc, onSnapshot } from "firebase/firestore"
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
+
 
 export const EditDocs = ({ database }) => {
     const params = useParams()
@@ -28,9 +31,16 @@ export const EditDocs = ({ database }) => {
             updateDoc(document, {
                 docsDesc: docsDesc
             })
-                .then(() => { alert('Saved') })
+                .then(() => {
+                    toast.success('Document Saved', {
+                        autoClose: 2000
+                    })
+
+                })
                 .catch(() => {
-                    alert('Cannot Save')
+                    toast.error('Cannot Save Document', {
+                        autoClose: 2000
+                    })
                 })
         }, 1000)
         return () => clearTimeout(updateDocsData)
@@ -44,13 +54,17 @@ export const EditDocs = ({ database }) => {
         getData()
     }, [])
     return (
-        <div>
+        <div className="editDocs-main">
             <h1>
                 {documentTitle}
             </h1>
-            <ReactQuill
-                value={docsDesc}
-                onChange={getQuillData} />
+            <div className="editDocs-inner">
+                <ReactQuill
+                    className="react-quill"
+                    value={docsDesc}
+                    onChange={getQuillData} />
+            </div>
+            <ToastContainer />
         </div>
     )
 }
