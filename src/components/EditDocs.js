@@ -54,17 +54,34 @@ export const EditDocs = ({ database }) => {
         getData()
     }, [])
     return (
-        <div className="editDocs-main">
-            <h1>
-                {documentTitle}
-            </h1>
-            <div className="editDocs-inner">
-                <ReactQuill
-                    className="react-quill"
-                    value={docsDesc}
-                    onChange={getQuillData} />
+        <div>
+            <div className="document-title-image">
+                <img src="https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_256px.png" alt="docs logo" className="docs-logo" />
+                <div className="document-title-inner">
+                    <h3>
+                        {documentTitle}
+                    </h3>
+                    <div className="upper-toolbar">
+                        <p>File</p>
+                        <p>Edit</p>
+                        <p>View</p>
+                        <p>Insert</p>
+                        <p>Format</p>
+                        <p>Tools</p>
+                        <p>Extensions</p>
+                        <p>Help</p>
+                    </div>
+                </div>
             </div>
-            <ToastContainer />
+            <div className="editDocs-main">
+                <div className="editDocs-inner">
+                    <ReactQuill
+                        className="react-quill"
+                        value={docsDesc}
+                        onChange={getQuillData} />
+                </div>
+                <ToastContainer />
+            </div>
         </div>
     )
 }
