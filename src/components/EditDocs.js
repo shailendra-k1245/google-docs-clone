@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
 import { useEffect, useRef, useState } from "react"
@@ -9,6 +9,7 @@ import { CiTimer } from "react-icons/ci"
 import { BiCommentDetail } from "react-icons/bi"
 import { MdVideoCall } from "react-icons/md"
 import { CgProfile } from "react-icons/cg"
+import { Dialog, DialogTitle } from "@mui/material"
 
 
 export const EditDocs = ({ database }) => {
@@ -16,6 +17,7 @@ export const EditDocs = ({ database }) => {
     const [docsDesc, setDocsDesc] = useState('')
     const [documentTitle, setDocumentTitle] = useState('')
     const collectionRef = collection(database, 'docsData')
+    const navigate = useNavigate()
     const isMounted = useRef()
     const getQuillData = (value) => {
         setDocsDesc(value)
@@ -28,6 +30,16 @@ export const EditDocs = ({ database }) => {
             setDocsDesc(docs.data().docsDesc)
         })
     }
+
+    const [openDialog, handleDisplay] = useState(false);
+
+    const handleClose = () => {
+        handleDisplay(false);
+    };
+
+    const openDialogBox = () => {
+        handleDisplay(true);
+    };
 
     useEffect(() => {
         const updateDocsData = setTimeout(() => {
@@ -57,10 +69,12 @@ export const EditDocs = ({ database }) => {
         isMounted.current = true
         getData()
     }, [])
+
     return (
         <div>
             <div className="document-title-image">
-                <img src="https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_256px.png" alt="docs logo" className="docs-logo" />
+                <img src="https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_256px.png" alt="docs logo" className="docs-logo"
+                    onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
                 <div className="document-title-inner">
                     <h3>
                         {documentTitle}
@@ -80,7 +94,8 @@ export const EditDocs = ({ database }) => {
                     <CiTimer />
                     <BiCommentDetail />
                     <MdVideoCall />
-                    <img src="https://2.bp.blogspot.com/-wuhkBGAM8bQ/Vt-Kz80of4I/AAAAAAAAUJU/v99P5XMEnLA/s320/share-button.png" alt="share" />
+                    <img src="https://2.bp.blogspot.com/-wuhkBGAM8bQ/Vt-Kz80of4I/AAAAAAAAUJU/v99P5XMEnLA/s320/share-button.png" alt="share"
+                        onClick={openDialogBox} />
                     <CgProfile />
                 </div>
             </div>
@@ -93,6 +108,18 @@ export const EditDocs = ({ database }) => {
                 </div>
                 <ToastContainer />
             </div>
+            <Dialog onClose={handleClose} open={openDialog}>
+                <DialogTitle> Link to the Doc </DialogTitle>
+                <h3 style={{ padding: '20px', cursor: 'pointer' }}
+                    onClick={() => {
+                        navigator.clipboard.writeText('https://google-docs-clone-murex-nine.vercel.app/editDocs/' + params.id);
+                        toast.success('Link copied', {
+                            autoClose: 2000
+                        })
+                    }}>
+                    {'https://google-docs-clone-murex-nine.vercel.app/editDocs/' + params.id}
+                </h3>
+            </Dialog>
         </div>
     )
 }
