@@ -9,6 +9,7 @@ import 'react-modern-drawer/dist/index.css'
 import { BiMenu } from 'react-icons/bi'
 import { useLocation } from 'react-router-dom';
 import { GrApps } from "react-icons/gr"
+import { CgProfile } from "react-icons/cg"
 
 
 function App() {
@@ -59,8 +60,8 @@ function App() {
           <img src='https://mailmeteor.com/logos/assets/PNG/Google_Docs_Logo_256px.png' alt='docs-icon' style={{ width: '30px' }} />
           <div className='navbar-div'>Docs</div>
           <input type='text' placeholder='Search' />
-          <GrApps />
-          <div>f</div>
+          <GrApps style={{ fontSize: '25px' }} />
+          <CgProfile style={{ fontSize: '25px' }} />
         </div> : ""}
 
       <Routes>

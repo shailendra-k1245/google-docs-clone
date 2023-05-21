@@ -18,7 +18,7 @@ export const Docs = ({ database }) => {
     const addData = () => {
         addDoc(collectionRef, {
             title: title,
-            docsDesc:''
+            docsDesc: ''
         })
             .then(() => {
                 alert('Data Added')
@@ -44,32 +44,52 @@ export const Docs = ({ database }) => {
         getData()
     })
     return (
-       <>
-       
-        <div className="docs-main">
-            <h1>Docs Clone</h1>
-            <button className="add-docs"
-                onClick={handleOpen}>
-                Add a Document
-            </button>
-            <ModalComponent
-                open={open}
-                setOpen={setOpen}
-                title={title}
-                setTitle={setTitle}
-                addData={addData} />
-            <div className="grid-main">
-                {docsData.map((doc) => {
-                    return (
-                        <div className="grid-child"
-                            onClick={() => getID(doc.id)}>
-                            <p>{doc.title}</p>
-                            <div dangerouslySetInnerHTML={{ __html: doc.docsDesc }} style={{ fontWeight: 'Bold', fontStyle: 'Italic' }} />
-                        </div>
-                    )
-                })}
-            </div>
-        </div >
-       </>
+        <>
+
+            <div className="docs-main">
+                <h1>Docs Clone</h1>
+                <button className="add-docs"
+                    onClick={handleOpen}>
+                    Add a Document
+                </button>
+                <ModalComponent
+                    open={open}
+                    setOpen={setOpen}
+                    title={title}
+                    setTitle={setTitle}
+                    addData={addData} />
+                <div className="start-new-doc">
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/docs-blank-googlecolors.png" alt="" onClick={handleOpen}/>
+                    </div>
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/1wyFqxsRmKm9q--7j4WRmBMn694YdhV6hmNrfh4rVm2E_400.png" alt="" onClick={handleOpen}/>
+                    </div>
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/10bJALGfGJG8BrzBSmG6EznIq6-84l1TZkQ-HC8jO368_400.png" alt="" onClick={handleOpen}/>
+                    </div>
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/10e8_E36oj6_LuCRzckBFX_9oqbCHntmYB-jxB5U9gsw_400_2.png" alt="" onClick={handleOpen}/>
+                    </div>
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/1XykI9TfWo4IoUqGLjQ-D8NIU4jZ1Ml9OI8-Euj5FrA0_400_3.png" alt="" onClick={handleOpen}/>
+                    </div>
+                    <div>
+                        <img src="https://ssl.gstatic.com/docs/templates/thumbnails/1TojfPV3jurwEV2RpmVqnCCCR4z9g2eQBZ40XTHPBqk8_400_3.png" alt="" onClick={handleOpen}/>
+                    </div>
+                </div>
+                <div className="grid-main">
+                    {docsData.map((doc) => {
+                        return (
+                            <div className="grid-child"
+                                onClick={() => getID(doc.id)}>
+                                <p>{doc.title}</p>
+                                <div dangerouslySetInnerHTML={{ __html: doc.docsDesc }} style={{ fontWeight: 'Bold', fontStyle: 'Italic' }} />
+                            </div>
+                        )
+                    })}
+                </div>
+            </div >
+        </>
     )
 }
