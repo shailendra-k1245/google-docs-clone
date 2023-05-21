@@ -182,3 +182,8 @@
   padding: 20px;
   cursor: pointer;
 }
+
+.light-font {
+  font-weight: lighter;
+  font-family: 'Roboto', Arial, sans-serif;
+}
